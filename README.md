@@ -11,8 +11,8 @@
 -dontoptimize | 关闭优化
 -dontobfuscate | 关闭混淆
 -dontpreverify | 关闭预校验
--verbose | 打印混淆的详细信息
 -dontusemixedcaseclassnames | 混淆时不使用大小写混合类名
+-verbose | 打印混淆的详细信息
 
 ## keep
 > 注意：没写{}，则表示不包含任何成员
