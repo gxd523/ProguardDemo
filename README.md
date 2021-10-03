@@ -16,11 +16,10 @@
 -verbose | 打印混淆的详细信息
 -dontusemixedcaseclassnames | 混淆时不使用大小写混合类名
 
-## 默认混淆
-* Android默认混淆规则：sdk/tools/proguard/proguard-android.txt
-
 ## keep
-关键字 | 类压缩 | 类混淆 | 成员压缩 | 成员混淆
+> 没写{}，则表示不包含任何成员
+
+关键字 | 类压缩 | 类混淆 | {}中的成员压缩 | {}中的成员混淆
 --- | :---: | :---: | :---: | :---:
 keep | ✕ | ✕ | ✕ | ✕
 keepnames | ✓ | ✕ | ✓ | ✕
@@ -28,24 +27,10 @@ keepclassmembers | ✓ | ✓ | ✕ | ✕
 keepclassmembernames | ✓ | ✓ | ✓ | ✕
 
 ### keepclasseswithmembers
-```xml
--keepclasseswithmember class * {
-    native <methods>;
-}
-```
-* 如果包含成员则不混淆、压缩类及符合条件成员，其他成员还是会压缩、混淆
-* 如果不包含，则不符合条件，此条配置不生效
+* 匹配到`{}`中的内容时，效果同`keep`，否则不产生任何效果
 
 ### keepclasseswithmembernames
-```xml
--keepclasseswithmembernames class * {
-    native <methods>;
-}
-```
-* 如果包含成员则不混淆类及符合条件成员，类及符合条件成员还是会压缩，其他成员还是会压缩、混淆
-* 如果不包含，则不符合条件，此条配置不生效
-
-* `-keep class com.demo.MainActivity$* { *; }`：保留匿名形式
+* 匹配到`{}`中的内容时，效果同`keepnames`，否则不产生任何效果
 
 ## keepattributes
 > 保留属性
@@ -81,3 +66,8 @@ $ | 内部类
 * seeds.txt：列出没有被混淆的类和成员
 * usage.txt：列出被移除的代码
 
+## 默认混淆
+* Android默认混淆规则：sdk/tools/proguard/proguard-android.txt
+
+## 其他
+* 保留匿名形式：`-keep class com.demo.MainActivity$* { *; }`
