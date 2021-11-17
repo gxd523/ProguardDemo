@@ -69,3 +69,4 @@ $ | 内部类
 
 ## 其他
 * 保留匿名形式：`-keep class com.demo.MainActivity$* { *; }`
+* `-repackageclasses <包名>`：可以将所有代码(包括三方库)都混淆到指定包名下
